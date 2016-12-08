@@ -1,0 +1,15 @@
+<div class="jumbotron">
+    <h1>{{movie.title}}</h1>
+    <img ng-src="{{movie.images.large}}" alt="{{movie.title}}">
+    <p>{{movie.summary}}</p>
+</div>
+<div class="mask" ng-show="load"><!--当load为true的时候就显示，为false的话就隐藏-->
+    <div class="loading">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+</div>

@@ -1,0 +1,42 @@
+<h1 class="page-header">{{title}}</h1>
+<h2 ng-if="message">{{message}}</h2>
+<div class="list-group">
+    <a ng-repeat="item in subjects" href="#/detail/{{item.id}}" class="list-group-item">
+        <span class="badge">{{item.rating.average}}</span>
+        <div class="media">
+            <div class="media-left">
+                <img ng-src="{{item.images.small}}" alt="{{item.title}}">
+            </div>
+            <div class="media-body">
+                <h3 class="media-heading"><strong>{{item.title}}</strong></h3>
+               <p>导演：<span ng-repeat="d in item.directors">{{d.name}}
+                   <span ng-if="!$last">、</span>
+               </span>
+
+               </p>
+               <p>类型：<span>{{item.genres.join('、')}}</span></p>
+            </div>
+        </div>
+    </a>
+</div>
+<div ng-show="!load">
+    <p>总共:{{countTotal}}条记录 第{{currentPage}}/{{totalPages}}页</p>
+    <nav>
+        <ul class="pager">
+            <!--当页数跳到小于1或者大于总的页数的时候，按钮就得不可用 class= diabled-->
+            <button ng-class="{disabled:currentPage<=1}"><a ng-click="go(currentPage-1)">上一页</a></button>
+            <button ng-class="{disabled:currentPage>=totalPages}"><a ng-click="go(currentPage+1)">下一页</a></button>
+        </ul>
+    </nav>
+</div>
+
+<div class="mask" ng-show="load"><!--当load为true的时候就显示，为false的话就隐藏-->
+    <div class="loading">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+</div>
